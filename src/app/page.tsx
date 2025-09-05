@@ -53,38 +53,6 @@ export default function Home() {
             </div>
           </div>
         </Link>
-
-        {/* Japan Trip Card */}
-        <div className="relative">
-          <div
-            className="h-60 rounded-xl overflow-hidden relative"
-            style={{
-              backgroundImage: "url(/title.jpg)",
-              backgroundSize: "cover",
-            }}
-          >
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent"></div>
-            <div className="absolute top-6 left-6">
-              <div className="flex items-center gap-2 text-white/100">
-                <span className="text-sm">🇯🇵 일본</span>
-              </div>
-            </div>
-            <div className="absolute bottom-6 left-6 right-6">
-              <div className="text-white">
-                <h2 className="text-4xl font-bold mb-2">Yakushima</h2>
-                <p className="text-xl mb-4">
-                  천년의 신비를 간직한
-                  <br />
-                  야쿠시마 트레킹
-                </p>
-                <div className="flex items-center gap-4 text-sm text-white/80">
-                  <span>2025년 봄</span>
-                  <span>3박 4일</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   );

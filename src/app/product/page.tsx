@@ -27,7 +27,7 @@ const BaliYogaRetreatPage: React.FC = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isBooking, setIsBooking] = useState(false);
   const [schedulesWithBookings, setSchedulesWithBookings] = useState<any[]>([]);
-	const [firstBooking, setFirstBooking] = useState(0);
+	const [firstBooking, setFirstBooking] = useState<any>(null);
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
     initial: 0,
     slideChanged(slider) {
