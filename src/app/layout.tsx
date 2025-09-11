@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Inter, Noto_Sans_KR } from "next/font/google";
+import { Inter } from "next/font/google";
+import localFont from 'next/font/local'
 import "./globals.css";
 
 const inter = Inter({
@@ -9,12 +10,10 @@ const inter = Inter({
   variable: '--font-inter',
 })
 
-// 한글 폰트
-const notoSansKr = Noto_Sans_KR({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '700', '900'],
-  display: 'swap',
-  variable: '--font-noto-sans-kr',
+const suit = localFont({
+  src: '../../public/fonts/SUIT-Variable.woff2',
+  variable: '--font-suit',
+  weight: '100 900',
 })
 
 export const metadata: Metadata = {
@@ -31,8 +30,8 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={`
-          ${inter.variable} 
-          ${notoSansKr.variable} 
+					${suit.variable}
+          ${inter.variable}
           antialiased`
         }
       >

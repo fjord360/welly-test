@@ -21,31 +21,29 @@ export default function Home() {
         </div>
 
         {/* Bali Trip Card */}
-        <Link href="/product">
+        <Link href="/product/finland-2025">
           <div className="relative mb-6">
             <div
               className="h-60 rounded-xl overflow-hidden relative"
               style={{
-                backgroundImage: "url(/title.jpg)",
+                backgroundImage: "url(/images/thumbnail-1-1.png)",
                 backgroundSize: "cover",
               }}
             >
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent"></div>
               <div className="absolute top-6 left-6">
                 <div className="flex items-center gap-2 text-white/100">
-                  <span className="text-sm">🇮🇩 인도네시아</span>
+                  <span className="text-sm">🇫🇮 핀란드</span>
                 </div>
               </div>
               <div className="absolute bottom-6 left-6 right-6">
                 <div className="text-white">
-                  <h2 className="text-4xl font-bold mb-2">Bali</h2>
+                  <h2 className="text-3xl font-bold mb-2">Finland Wellness</h2>
                   <p className="text-xl mb-4">
-                    신들의 섬으로 떠나는
-                    <br />
-                    발리 요가 여행
+										핀란드 웰니스 여행
                   </p>
                   <div className="flex items-center gap-4 text-sm text-white/80">
-                    <span>2025년8-12월</span>
+                    <span>2025년 11-12월</span>
                     <span>4박 6일</span>
                   </div>
                 </div>
