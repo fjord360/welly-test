@@ -9,6 +9,7 @@ import ProductInclusions from "./ProductInclusions";
 import FlightCardsSlider from "./FlightSlider";
 import ItineraryComponent from "./ItineraryComponent";
 import StayComponent from "./StayComponent";
+import BookingPopup from "./BookingPopup";
 
 import { createClient } from "@/app/utils/client";
 
@@ -31,6 +32,7 @@ const images = [
 ];
 
 const ProductPage: React.FC = () => {
+	const [isBookingPopupOpen, setIsBookingPopupOpen] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isBooking, setIsBooking] = useState(false);
   const [schedulesWithBookings, setSchedulesWithBookings] = useState<any[]>([]);
@@ -102,6 +104,10 @@ const ProductPage: React.FC = () => {
   useEffect(() => {
     //fetchData();
   }, [supabase]);
+
+	const OnClickCTAButton = () => {
+		setIsBookingPopupOpen(true);
+	}
 
   const handleBooking = async (scheduleId: string) => {
     setIsBooking(true);
@@ -339,7 +345,7 @@ const ProductPage: React.FC = () => {
       </div>
 
       {/* Fixed CTA Button */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-lg">
+      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-lg z-[10]">
 				<div className="max-w-4xl mx-auto px-4 py-4">
 					{/* 가격 정보 */}
 					<div className="text-sm font-bold text-gray-900 mb-4">
@@ -351,6 +357,7 @@ const ProductPage: React.FC = () => {
 						<div className="flex-1">
 							{/* 일정 및 가격 버튼 */}
 							<button
+								onClick={OnClickCTAButton}
 								className="w-full h-[34px] px-8 bg-[#222222] text-sm text-white font-semibold rounded-sm hover:bg-gray-900 transition-colors duration-200"
 							>
 								일정 및 가격
@@ -368,6 +375,12 @@ const ProductPage: React.FC = () => {
 					</div>
 				</div>
 			</div>
+
+			{isBookingPopupOpen && (
+        <BookingPopup 
+          onClose={() => setIsBookingPopupOpen(false)} 
+        />
+      )}
     </div>
   );
 };
