@@ -2,6 +2,8 @@
 import React, { useEffect, useState } from "react";
 import { ChevronLeft, X } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
+
 import BookingCard from "./BookingCard";
 import HighlightSlider from "./HighlightSlider";
 import LeaderSlider from "./LeaderSlider";
@@ -32,7 +34,7 @@ const images = [
 ];
 
 const ProductPage: React.FC = () => {
-	const [isBookingPopupOpen, setIsBookingPopupOpen] = useState(false);
+  const [isBookingPopupOpen, setIsBookingPopupOpen] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isBooking, setIsBooking] = useState(false);
   const [schedulesWithBookings, setSchedulesWithBookings] = useState<any[]>([]);
@@ -105,9 +107,9 @@ const ProductPage: React.FC = () => {
     //fetchData();
   }, [supabase]);
 
-	const OnClickCTAButton = () => {
-		setIsBookingPopupOpen(true);
-	}
+  const OnClickCTAButton = () => {
+    setIsBookingPopupOpen(true);
+  };
 
   const handleBooking = async (scheduleId: string) => {
     setIsBooking(true);
@@ -204,6 +206,7 @@ const ProductPage: React.FC = () => {
           </div>
         </div>
       )}
+
       {/* Hero Section with Background Image */}
       <div className="relative h-[362px]">
         <div className="relative">
@@ -218,28 +221,27 @@ const ProductPage: React.FC = () => {
               </div>
             ))}
           </div>
+          {/* 슬라이더 도트 */}
           {loaded && instanceRef.current && (
-            <>
-              <div className="dots">
+            <div className="flex justify-center">
+              <div className="space-x-1">
                 {[
                   ...Array(
                     instanceRef.current.track.details.slides.length
                   ).keys(),
-                ].map((idx) => {
-                  return (
-                    <button
-                      key={idx}
-                      onClick={() => {
-                        instanceRef.current?.moveToIdx(idx);
-                      }}
-                      className={
-                        "dot" + (currentSlide === idx ? " active" : "")
-                      }
-                    ></button>
-                  );
-                })}
+                ].map((idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => {
+                      instanceRef.current?.moveToIdx(idx);
+                    }}
+                    className={`w-2 h-2 rounded-full transition-colors ${
+                      currentSlide === idx ? "bg-gray-900" : "bg-gray-250"
+                    }`}
+                  />
+                ))}
               </div>
-            </>
+            </div>
           )}
           {/* Back Button - Slider 위에 오버레이 */}
           <div className="absolute inset-0 pointer-events-none">
@@ -255,29 +257,27 @@ const ProductPage: React.FC = () => {
       </div>
 
       {/* Content Sections */}
-      <div className="pb-24">
+      <div className="mt-12 mb-40">
         {/* Summary Section */}
-        <section id="Summary" className="px-6 py-16">
+        <section id="Summary" className="px-6">
           <div className="flex items-center justify-between mb-8">
             <div>
-              <h4 className="text-3xl font-extrabold text-gray-800 mb-4">
+              <h4 className="text-3xl font-extrabold text-black mb-4">
                 Finland Wellness
               </h4>
-              <p className="text-gray-600">
-                태양 활동의 극대기, 긴 밤이 깃든 곳.
-                <br />
-                세계적인 오로라 관측지 라플란드에서
-                <br />
-                프라이빗 투어로 빛을 찾아갑니다.
-              </p>
+              <div className="text-gray-800 text-base text-regular space-y-[4px]">
+                <p>태양 활동의 극대기, 긴 밤이 깃든 곳.</p>
+                <p>세계적인 오로라 관측지 라플란드에서</p>
+                <p>프라이빗 투어로 빛을 찾아갑니다.</p>
+              </div>
             </div>
           </div>
         </section>
 
         {/* Highlight Section */}
-        <section id="Highlight" className="py-16">
+        <section id="Highlight" className="mt-20">
           <div className="px-6 mb-4">
-            <h4 className="text-2xl font-extrabold text-gray-800 mb-4">
+            <h4 className="text-2xl font-extrabold text-black mb-4">
               Highlight
             </h4>
           </div>
@@ -287,11 +287,9 @@ const ProductPage: React.FC = () => {
         </section>
 
         {/* Leader Section*/}
-        <section id="Leader" className="py-16">
+        <section id="Leader" className="mt-20">
           <div className="px-6 mb-4">
-            <h4 className="text-2xl font-extrabold text-gray-800 mb-4">
-              Leader
-            </h4>
+            <h4 className="text-2xl font-extrabold text-black mb-4">Leader</h4>
           </div>
 
           <div className="ml-6 mr-6">
@@ -300,86 +298,103 @@ const ProductPage: React.FC = () => {
         </section>
 
         {/* ProductInclusions Section*/}
-        <section id="ProductInclusions" className="py-16">
+        <section id="ProductInclusions" className="mt-20">
+          <div className="px-6 mb-6">
+            <h4 className="text-2xl font-extrabold text-black mb-4">
+              포함사항
+            </h4>
+          </div>
+
           <div className="ml-6 mr-6">
             <ProductInclusions />
           </div>
         </section>
 
         {/* Route Section */}
-        <section id="Route" className="px-6 py-8 bg-white-100">
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Route</h3>
-          <div className="space-y-6">
-            <div className="bg-white pb-6 rounded-lg">
-              <p className="font-medium text-gray-900 text-sm">
-                Helsinki {">"} Kittilä (항공)
-              </p>
-              <p className="font-medium text-gray-900 text-sm">
-                Kittilä {">"} Rovaniemi (버스)
-              </p>
-              <p className="font-medium text-gray-900 text-sm">
-                Rovaniemi {">"} Helsinki (야간기차)
-              </p>
-            </div>
+        <section id="Route" className="mt-20">
+          <div className="px-6 mb-6">
+            <h4 className="text-2xl font-extrabold text-black mb-4">Route</h4>
           </div>
-          <MapComponent />
+
+          <div className="ml-6 mr-6">
+            <MapComponent />
+          </div>
         </section>
 
-				{/* Flights Section */}
-        <section id="Flights" className="px-6 py-24 bg-white-100">
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Flights</h3>
-					<FlightCardsSlider />
+        {/* Flights Section */}
+        <section id="Flights" className="mt-36">
+          <div className="px-6 mb-6">
+            <h4 className="text-2xl font-extrabold text-black mb-4">Flights</h4>
+          </div>
+
+          <div className="ml-6 mr-6">
+            <FlightCardsSlider />
+          </div>
         </section>
 
-				{/* Itinerary Section */}
-        <section id="Itinerary" className="px-6 py-24 bg-white-100">
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">상세일정</h3>
-					<ItineraryComponent />
+        {/* Itinerary Section */}
+        <section id="Itinerary" className="mt-20">
+          <div className="px-6 mb-6">
+            <h4 className="text-2xl font-extrabold text-black mb-4">
+              상세일정
+            </h4>
+          </div>
+
+          <div className="ml-6 mr-6">
+            <ItineraryComponent />
+          </div>
         </section>
 
-				{/* Stay Section */}
-				<section id="Stay" className="px-6 py-24 bg-white-100">
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Stay</h3>
-					<StayComponent />
+        {/* Stay Section */}
+        <section id="Stay" className="mt-20">
+          <div className="px-6 mb-6 flex items-center gap-2">
+            <Image
+              src="/icons/icon-stay.svg"
+              alt="Stay"
+              width={32}
+              height={32}
+              className="w-[32px] h-[32px]"
+            />
+            <h4 className="text-2xl font-extrabold text-black">Stay</h4>
+          </div>
+
+          <div className="ml-6 mr-6">
+            <StayComponent />
+          </div>
         </section>
       </div>
 
       {/* Fixed CTA Button */}
       <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-lg z-[10]">
-				<div className="max-w-4xl mx-auto px-4 py-4">
-					{/* 가격 정보 */}
-					<div className="text-sm font-bold text-gray-900 mb-4">
-						<span className="underline">129,000원 부터</span>
-					</div>
-						
-					<div className="flex items-center justify-between gap-2 mb-4">
-						{/* 버튼 그룹 */}
-						<div className="flex-1">
-							{/* 일정 및 가격 버튼 */}
-							<button
-								onClick={OnClickCTAButton}
-								className="w-full h-[34px] px-8 bg-[#222222] text-sm text-white font-semibold rounded-sm hover:bg-gray-900 transition-colors duration-200"
-							>
-								일정 및 가격
-							</button>
-						</div>
-						<div className="flex-1">
+        <div className="max-w-4xl mx-auto px-4 py-4">
+          {/* 가격 정보 */}
+          <div className="text-sm font-bold text-gray-900 mb-4">
+            <span className="underline">129,000원 부터</span>
+          </div>
 
-							{/* 찜하기 버튼 */}
-							<button
-								className="w-full h-[34px] px-8 bg-white text-sm text-[#222222] font-semibold border-1 border-[#D6D6D6] rounded-sm hover:bg-gray-50 hover:border-gray-400 transition-all duration-200"
-							>
-								찜하기
-							</button>
-						</div>
-					</div>
-				</div>
-			</div>
+          <div className="flex items-center justify-between gap-2 mb-4">
+            {/* 버튼 그룹 */}
+            <div className="flex-1">
+              {/* 일정 및 가격 버튼 */}
+              <button
+                onClick={OnClickCTAButton}
+                className="w-full h-[34px] px-8 bg-gray-900 text-sm text-white font-semibold rounded-sm hover:bg-gray-900 transition-colors duration-200"
+              >
+                일정 및 가격
+              </button>
+            </div>
+            <div className="flex-1">
+              {/* 찜하기 버튼 */}
+              <button className="w-full h-[34px] px-8 bg-white text-sm text-gray-900 font-semibold border-1 border-gray-250 rounded-sm hover:bg-gray-50 hover:border-gray-400 transition-all duration-200">
+                찜하기
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
 
-			{isBookingPopupOpen && (
-        <BookingPopup 
-          onClose={() => setIsBookingPopupOpen(false)} 
-        />
+      {isBookingPopupOpen && (
+        <BookingPopup onClose={() => setIsBookingPopupOpen(false)} />
       )}
     </div>
   );

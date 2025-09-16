@@ -48,10 +48,10 @@ const DayItineraryCard: React.FC<DayItineraryCardProps> = ({
     <div className={`overflow-hidden ${className}`}>
       {/* 헤더 */}
       <div className="pb-4">
-        <div className="text-[#494949] text-sm font-medium mb-2">
+        <div className="text-gray-800 text-sm font-medium mb-2">
           Day {itinerary.day}
         </div>
-        <h2 className="text-lg font-extrabold text-[#222222]">
+        <h2 className="text-lg font-extrabold text-gray-900">
           {itinerary.title}
         </h2>
       </div>
@@ -65,11 +65,11 @@ const DayItineraryCard: React.FC<DayItineraryCardProps> = ({
                 <div className="w-full h-full bg-cover bg-center">
                   <div className="w-full h-full bg-gray-800/20 flex items-center justify-center relative">
                     <Image
-											key={image.id}
+                      key={image.id}
                       src={image.url}
                       alt={image.alt}
                       fill
-											sizes="(max-width: 768px) 100vw, 50vw"
+                      sizes="(max-width: 768px) 100vw, 50vw"
                       className="object-cover"
                     />
                   </div>
@@ -83,7 +83,7 @@ const DayItineraryCard: React.FC<DayItineraryCardProps> = ({
       {/* 슬라이더 도트 */}
       {loaded && instanceRef.current && (
         <div className="flex justify-center">
-          <div className="space-x-2">
+          <div className="space-x-1">
             {[
               ...Array(instanceRef.current.track.details.slides.length).keys(),
             ].map((idx) => (
@@ -93,7 +93,7 @@ const DayItineraryCard: React.FC<DayItineraryCardProps> = ({
                   instanceRef.current?.moveToIdx(idx);
                 }}
                 className={`w-2 h-2 rounded-full transition-colors ${
-                  currentSlide === idx ? "bg-[#787878]" : "bg-[#E1E1E1]"
+                  currentSlide === idx ? "bg-gray-600" : "bg-gray-200"
                 }`}
               />
             ))}

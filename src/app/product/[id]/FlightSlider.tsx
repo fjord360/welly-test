@@ -121,10 +121,10 @@ const FlightCardsSlider = () => {
         <div ref={sliderRef} className="keen-slider">
           {flightCards.map((card) => (
             <div key={card.id} className="keen-slider__slide">
-              <div className="bg-white rounded-2xl border border-[#E4BCE9] hover:shadow-md transition-shadow duration-300 overflow-hidden max-w-md">
+              <div className="bg-white rounded-2xl border border-purple-200 hover:shadow-md transition-shadow duration-300 overflow-hidden max-w-md">
                 {/* 카드 헤더 */}
                 <div className="p-4 pb-2">
-                  <div className="text-sm text-[#8E8E8E] mb-2">{card.year}</div>
+                  <div className="text-sm text-gray-500 mb-2">{card.year}</div>
                   <div className="flex mb-4 gap-2">
                     <h3 className="text-xl font-medium text-gray-900">
                       {card.startDate}
@@ -138,24 +138,27 @@ const FlightCardsSlider = () => {
                   {/* 요일 표시 */}
                   <div className="flex gap-2 text-sm mb-6">
                     {card.weekDays.map((day, index) => (
-											<div key={index} className="w-[32px] h-[32px] rounded-full font-semibold flex justify-center items-center text-sm bg-[#F7F8FF]">
-												<p className={"font-medium text-[#112C9C]"}>{day}</p>
-											</div>
+                      <div
+                        key={index}
+                        className="w-[32px] h-[32px] rounded-full font-semibold flex justify-center items-center text-sm bg-blue-50"
+                      >
+                        <p className={"font-medium text-primary"}>{day}</p>
+                      </div>
                     ))}
                   </div>
                 </div>
 
                 {/* 출국 항공편 */}
                 <div className="px-3 pb-3">
-                  <div className="border-b border-[#2469E9] h-[32px] bg-[#F9FBFF] pb-2 mb-4">
-                    <h4 className="text-base font-extrabold pl-1 pt-1 text-[#2469E9]">
+                  <div className="border-b border-blue-500 h-[32px] bg-blue-50 pb-2 mb-4">
+                    <h4 className="text-base font-extrabold pl-1 pt-1 text-blue-500">
                       {card.outbound.title}
                     </h4>
                   </div>
 
                   <div className="bg-white rounded-lg p-3 mb-2 shadow-sm relative">
-										<div className="absolute top-4 right-4">
-											<Image
+                    <div className="absolute top-4 right-4">
+                      <Image
                         src="/images/flight-logo-finnair.png"
                         alt="Finnair Logo"
                         width={90}
@@ -170,7 +173,7 @@ const FlightCardsSlider = () => {
                       </span>
                     </div>
 
-                    <div className="text-sm text-gray-700 mb-2 font-bold">
+                    <div className="text-sm text-gray-800 mb-2 font-bold">
                       {card.outbound.date}
                     </div>
 
@@ -178,8 +181,8 @@ const FlightCardsSlider = () => {
                       <span className="text-gray-600">
                         {card.outbound.route}
                       </span>
-											<span className="text-gray-600">|</span>
-											<span className="text-gray-600">
+                      <span className="text-gray-600">|</span>
+                      <span className="text-gray-600">
                         {card.outbound.time}
                       </span>
                     </div>
@@ -188,15 +191,15 @@ const FlightCardsSlider = () => {
 
                 {/* 귀국 항공편 */}
                 <div className="px-3 pb-2">
-                  <div className="border-b border-[#2469E9] bg-[#F9FBFF] pb-2 mb-4">
-                    <h4 className="text-base font-extrabold pl-1 pt-1 text-[#2469E9]">
+                  <div className="border-b border-blue-500 bg-blue-50 pb-2 mb-4">
+                    <h4 className="text-base font-extrabold pl-1 pt-1 text-blue-500">
                       {card.return.title}
                     </h4>
                   </div>
 
                   <div className="bg-white rounded-lg p-3 mb-2 shadow-sm relative">
-										<div className="absolute top-4 right-4">
-											<Image
+                    <div className="absolute top-4 right-4">
+                      <Image
                         src="/images/flight-logo-finnair.png"
                         alt="Finnair Logo"
                         width={90}
@@ -211,18 +214,14 @@ const FlightCardsSlider = () => {
                       </span>
                     </div>
 
-                    <div className="text-sm text-gray-700 mb-2 font-bold">
+                    <div className="text-sm text-gray-800 mb-2 font-bold">
                       {card.return.date}
                     </div>
 
                     <div className="flex items-start gap-2 text-xs">
-                      <span className="text-gray-600">
-                        {card.return.route}
-                      </span>
-											<span className="text-gray-600">|</span>
-											<span className="text-gray-600">
-                        {card.return.time}
-                      </span>
+                      <span className="text-gray-600">{card.return.route}</span>
+                      <span className="text-gray-600">|</span>
+                      <span className="text-gray-600">{card.return.time}</span>
                     </div>
                   </div>
                 </div>

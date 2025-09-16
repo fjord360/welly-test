@@ -61,9 +61,9 @@ const BookingPopup: React.FC<BookingPopupProps> = ({ onClose }) => {
       status: "Sold out",
       price: null,
     },
-    { name: "얼리버드", available: "0/3", status: null, price: 578 },
-    { name: "라스트 콜", available: "0/3", status: null, price: 600 },
-    { name: "캔슬 티켓", available: "0/3", status: null, price: 632 },
+    { name: "얼리버드", available: "0/3", status: null, price: 527 },
+    { name: "라스트 콜", available: "0/3", status: null, price: 578 },
+    { name: "캔슬 티켓", available: "0/3", status: null, price: 600 },
   ];
 
   const discountOptions: DiscountOption[] = [
@@ -110,16 +110,16 @@ const BookingPopup: React.FC<BookingPopupProps> = ({ onClose }) => {
       {/* 헤더 */}
       <div className="flex justify-between items-center p-1 mt-10">
         <div className="flex space-x-1">
-          <div className="bg-[#EDEDED] px-3 py-2 rounded-sm">
-            <button className="text-[#222222] text-base font-extrabold">
+          <div className="bg-gray-100 px-3 py-2 rounded-sm">
+            <button className="text-gray-900 text-base font-extrabold">
               11월
             </button>
           </div>
           <div className="bg-white px-3 py-2 rounded-sm">
-            <button className="text-[#B7B7B7] text-base font-bold">12월</button>
+            <button className="text-gray-300 text-base font-bold">12월</button>
           </div>
           <div className="bg-white px-3 py-2 rounded-sm">
-            <button className="text-[#B7B7B7] text-base font-bold">1월</button>
+            <button className="text-gray-300 text-base font-bold">1월</button>
           </div>
         </div>
       </div>
@@ -133,18 +133,18 @@ const BookingPopup: React.FC<BookingPopupProps> = ({ onClose }) => {
           {trips.map((trip) => (
             <div
               key={trip.id}
-              className="border-[#D6D6D6] border-1 rounded-lg p-3 cursor-pointer transition-all duration-200"
+              className="border-gray-250 border-1 rounded-lg p-3 cursor-pointer transition-all duration-200"
               onClick={() => handleTripClick(trip)}
             >
               <div className="flex justify-between items-center">
                 <div className="w-full">
                   <div className="flex justify-between items-center">
-                    <div className="text-xs text-[#8E8E8E] mb-1">
+                    <div className="text-xs text-gray-500 mb-1">
                       {trip.year}년
                     </div>
                     <div className="">
                       <ChevronDown
-                        className={`w-8 h-8 text-[#787878] pt-2 transition-transform ${
+                        className={`w-8 h-8 text-gray-600 pt-2 transition-transform ${
                           selectedTrip?.id === trip.id ? "rotate-180" : ""
                         }`}
                         onClick={() => closeHandleTripClick()}
@@ -153,7 +153,7 @@ const BookingPopup: React.FC<BookingPopupProps> = ({ onClose }) => {
                   </div>
 
                   <div className="flex items-center space-x-2">
-                    <span className="font-semibold text-sm text-[#222222]">
+                    <span className="font-semibold text-sm text-gray-900">
                       {trip.startDate}
                     </span>
                     <Image
@@ -163,35 +163,35 @@ const BookingPopup: React.FC<BookingPopupProps> = ({ onClose }) => {
                       height={10}
                       className="w-3 h-3"
                     />
-                    <span className="font-semibold text-sm text-[#222222]">
+                    <span className="font-semibold text-sm text-gray-900">
                       {trip.endDate}
                     </span>
-                    <div className="text-gray-600 text-xs text-[#787878] ml-1">
+                    <div className="text-gray-600 text-xs text-gray-600 ml-1">
                       {trip.duration}
                     </div>
                   </div>
 
                   {selectedTrip?.id != trip.id && (
-                    <div className="flex items-center justify-between mt-4 pt-3 border-t border-[#D6D6D6]">
+                    <div className="flex items-center justify-between mt-4 pt-3 border-t border-gray-250">
                       <div className="flex items-center space-x-2">
                         <div className="space-y-2 w-[36px] h-[6px]">
                           <div className="w-full h-full bg-gray-200 rounded-full overflow-hidden">
                             <div
-                              className="h-full bg-[#2469E9] rounded-full transition-all duration-500 ease-out"
+                              className="h-full bg-blue-500 rounded-full transition-all duration-500 ease-out"
                               style={{ width: `80%` }}
                             />
                           </div>
                         </div>
                         <div className="flex items-center space-x-1">
-                          <span className="text-sm text-bold text-[#494949]">
+                          <span className="text-sm text-bold text-gray-800">
                             {trip.remainingSeats}
                           </span>
-                          <span className="text-xs text-[#787878]">
+                          <span className="text-xs text-gray-600">
                             자리 남았습니다
                           </span>
                         </div>
                       </div>
-                      <div className="text-sm text-[#494949] text-extrabold">
+                      <div className="text-sm text-gray-800 text-extrabold">
                         527만원
                       </div>
                     </div>
@@ -207,9 +207,9 @@ const BookingPopup: React.FC<BookingPopupProps> = ({ onClose }) => {
                     {weekDays.map((day, index) => (
                       <div
                         key={index}
-                        className="w-[32px] h-[32px] rounded-full font-semibold flex justify-center items-center text-sm bg-[#F9F9F9]"
+                        className="w-[32px] h-[32px] rounded-full font-semibold flex justify-center items-center text-sm bg-gray-50"
                       >
-                        <p className={"font-medium text-[#5A5A5A]"}>{day}</p>
+                        <p className={"font-medium text-gray-700"}>{day}</p>
                       </div>
                     ))}
                   </div>
@@ -221,9 +221,9 @@ const BookingPopup: React.FC<BookingPopupProps> = ({ onClose }) => {
                         key={room.name}
                         className={`flex justify-between items-center p-3 rounded-lg cursor-pointer ${
                           room.status === "Sold out"
-                            ? "bg-[#F9F9F9] cursor-not-allowed"
+                            ? "bg-gray-50 cursor-not-allowed"
                             : index === 1
-                            ? "border border-[#112C9C]"
+                            ? "border border-primary"
                             : ""
                         }`}
                       >
@@ -231,7 +231,7 @@ const BookingPopup: React.FC<BookingPopupProps> = ({ onClose }) => {
                           <span
                             className={
                               room.status === "Sold out"
-                                ? "text-sm text-[#B7B7B7] text-bold w-[96px]"
+                                ? "text-sm text-gray-300 text-bold w-[96px]"
                                 : "text-sm font-medium text-bold w-[96px]"
                             }
                           >
@@ -240,15 +240,15 @@ const BookingPopup: React.FC<BookingPopupProps> = ({ onClose }) => {
                           <span
                             className={
                               room.status === "Sold out"
-                                ? "ml-2 text-sm text-[#B7B7B7] text-bold"
-                                : "ml-2 text-sm text-[#5A5A5A] ml-2"
+                                ? "ml-2 text-sm text-gray-300 text-bold"
+                                : "ml-2 text-sm text-gray-700 ml-2"
                             }
                           >
                             {room.available}
                           </span>
                         </div>
                         {room.status && (
-                          <span className="text-sm text-[#B7B7B7] ml-2">
+                          <span className="text-sm text-gray-300 ml-2">
                             {room.status}
                           </span>
                         )}
@@ -267,7 +267,7 @@ const BookingPopup: React.FC<BookingPopupProps> = ({ onClose }) => {
                       <label
                         key={option.name}
                         className={`flex items-center justify-between cursor-pointer p-2 ${
-                          selectedDiscount[index] ? "bg-[#F9FBFF]" : ""
+                          selectedDiscount[index] ? "bg-blue-50" : ""
                         }`}
                       >
                         <div className="flex items-center">
@@ -278,11 +278,11 @@ const BookingPopup: React.FC<BookingPopupProps> = ({ onClose }) => {
                             onChange={() => handleDiscountSelect(index)}
                             className="w-4 h-4"
                           />
-                          <span className="ml-3 text-[#222222] text-sm">
+                          <span className="ml-3 text-gray-900 text-sm">
                             {option.name}
                           </span>
                         </div>
-                        <span className={"font-medium text-sm text-[#5A5A5A]"}>
+                        <span className={"font-medium text-sm text-gray-700"}>
                           {option.discount > 0 ? "+" : ""}
                           {option.discount}만원
                         </span>
@@ -291,19 +291,19 @@ const BookingPopup: React.FC<BookingPopupProps> = ({ onClose }) => {
                   </div>
 
                   {/* 최종 가격 */}
-                  <div className="text-center mb-4 bg-[#F9FBFF] py-4">
+                  <div className="text-center mb-4 bg-blue-50 py-4">
                     <div className="flex items-center space-x-2 justify-center">
-                      <span className="text-sm font-bold text-[#2469E9]">
+                      <span className="text-sm font-bold text-blue-500">
                         최종가격
                       </span>
-                      <span className="text-xl font-bold text-[#112C9C]">
+                      <span className="text-xl font-bold text-primary">
                         {calculateFinalPrice()}
                       </span>
-                      <span className="text-xs font-bold text-[#112C9C] pt-[2px]">
+                      <span className="text-xs font-bold text-primary pt-[2px]">
                         만원
                       </span>
                     </div>
-                    <div className="text-xs text-gray-500 mt-1">
+                    <div className="text-xs text-gray-700 mt-1">
                       {selectedDiscount[0] &&
                         selectedDiscount[1] &&
                         "항공권 별도 구매 / 1인실 사용"}
@@ -317,7 +317,7 @@ const BookingPopup: React.FC<BookingPopupProps> = ({ onClose }) => {
                   </div>
 
                   {/* 예약 버튼 */}
-                  <button className="w-full h-[34px] bg-[#222222] text-sm text-white rounded-lg font-semibold hover:bg-gray-800 transition-colors">
+                  <button className="w-full h-[34px] bg-gray-900 text-sm text-white rounded-lg font-semibold hover:bg-gray-800 transition-colors">
                     예약금 50만원 결제
                   </button>
 
@@ -326,16 +326,16 @@ const BookingPopup: React.FC<BookingPopupProps> = ({ onClose }) => {
                       <div className="space-y-2 w-[36px] h-[6px]">
                         <div className="w-full h-full bg-gray-200 rounded-full overflow-hidden">
                           <div
-                            className="h-full bg-[#2469E9] rounded-full transition-all duration-500 ease-out"
+                            className="h-full bg-blue-500 rounded-full transition-all duration-500 ease-out"
                             style={{ width: `80%` }}
                           />
                         </div>
                       </div>
                       <div className="flex items-center space-x-1">
-                        <span className="text-sm text-bold text-[#494949]">
+                        <span className="text-sm text-bold text-gray-800">
                           {trip.remainingSeats}
                         </span>
-                        <span className="text-xs text-[#787878]">
+                        <span className="text-xs text-gray-600">
                           자리 남았습니다
                         </span>
                       </div>

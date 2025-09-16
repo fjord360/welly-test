@@ -55,12 +55,12 @@ const HighlightSlider = () => {
                 }}
               />
               {/* 어두운 오버레이 */}
-              <div className="absolute inset-0 bg-black/10" />
+              <div className="absolute h-[180px] bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-black/0" />
 
               {/* 텍스트 콘텐츠 */}
               <div className="absolute bottom-6 left-6 text-white">
                 <h3 className="text-2xl font-bold mb-4">Day {item.day}</h3>
-                <div className="space-y-0">
+                <div className="space-y-1">
                   {item.title.map((line, lineIdx) => (
                     <h3 key={lineIdx} className="text-2xl font-extrabold">
                       {line}

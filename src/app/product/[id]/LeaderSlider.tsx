@@ -39,19 +39,22 @@ const LeaderSlider = () => {
     {
       name: "김우주",
       title: "호치민 거주 25년 사업은 망했지만 여행은 성공",
-      intro: "안녕하세요. 문요한입니다. 태양 활동의 극대기, 긴 밤이 깃든 곳. 세계적인 오로라 관측지 라플란드에서 프라이빗 투어로 빛을 찾아갑니다.",
+      intro:
+        "안녕하세요. 문요한입니다. 태양 활동의 극대기, 긴 밤이 깃든 곳. 세계적인 오로라 관측지 라플란드에서 프라이빗 투어로 빛을 찾아갑니다.",
       image: "/images/leader-1.png",
     },
     {
       name: "헬레나 리",
       title: "필리핀 거주 12년 사업은 망했지만 결혼은 성공",
-      intro: "안녕하세요. 문요한입니다. 태양 활동의 극대기, 긴 밤이 깃든 곳. 세계적인 오로라 관측지 라플란드에서 프라이빗 투어로 빛을 찾아갑니다.",
+      intro:
+        "안녕하세요. 문요한입니다. 태양 활동의 극대기, 긴 밤이 깃든 곳. 세계적인 오로라 관측지 라플란드에서 프라이빗 투어로 빛을 찾아갑니다.",
       image: "/images/leader-2.png",
     },
     {
       name: "응우옌 예리 안",
       title: "인도네시아 거주 17년, 요가 강습 12년 경력의 요가 베테랑 가이드",
-      intro: "안녕하세요. 문요한입니다. 태양 활동의 극대기, 긴 밤이 깃든 곳. 세계적인 오로라 관측지 라플란드에서 프라이빗 투어로 빛을 찾아갑니다.",
+      intro:
+        "안녕하세요. 문요한입니다. 태양 활동의 극대기, 긴 밤이 깃든 곳. 세계적인 오로라 관측지 라플란드에서 프라이빗 투어로 빛을 찾아갑니다.",
       image: "/images/leader-3.png",
     },
   ];
@@ -65,29 +68,29 @@ const LeaderSlider = () => {
             <div className="bg-white rounded-2xl border border-gray-200 transition-shadow duration-300 overflow-hidden h-[344px] max-w-sm">
               {/* 리더 이미지 */}
               <div
-                  className="bg-cover bg-center bg-no-repeat mt-4 ml-4 mr-4 h-[94px] rounded-lg"
-                  style={{
-                    backgroundImage: `url(${guide.image})`,
-                  }}
-                />
+                className="bg-cover bg-center bg-no-repeat mt-4 ml-4 mr-4 h-[94px] rounded-lg"
+                style={{
+                  backgroundImage: `url(${guide.image})`,
+                }}
+              />
 
               {/* 카드 콘텐츠 */}
               <div className="p-4">
                 {/* 가이드 이름 */}
-                <h3 className="text-base font-bold text-[#494949] mb-1">
+                <h3 className="text-base font-bold text-gray-800 mb-1">
                   {guide.name}
                 </h3>
 
                 {/* 부제목과 설명 */}
-                <p className="text-sm text-[#494949] mb-1 leading-relaxed">
+                <p className="text-sm text-gray-800 mb-1 leading-relaxed">
                   {guide.title}
                 </p>
 
                 {/* 점선 구분선 */}
-                <div className="border-t border-dotted border-gray-300 my-3"></div>
+                <div className="border-t border-dashed border-gray-600 my-3"></div>
 
                 {/* 가이드 소개 */}
-                <p className="text-xs text-[#494949] leading-relaxed line-clamp-5">
+                <p className="text-xs text-gray-800 leading-relaxed line-clamp-5">
                   {guide.intro}
                 </p>
               </div>

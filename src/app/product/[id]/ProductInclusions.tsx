@@ -51,7 +51,11 @@ const ProductInclusions = () => {
     {
       icon: "/icons/icon-meal.svg",
       title: "식사",
-      description: ["조식 3회, 기차내 조식 1회", "점심 1회, 저녁 3회", "커뮤니티 디너 1회"],
+      description: [
+        "조식 3회, 기차내 조식 1회",
+        "점심 1회, 저녁 3회",
+        "커뮤니티 디너 1회",
+      ],
     },
     {
       icon: "/icons/icon-tour.svg",
@@ -63,40 +67,37 @@ const ProductInclusions = () => {
     },
   ];
 
-	const exclusionItems = [
-		{
+  const exclusionItems = [
+    {
       icon: "/icons/icon-deny.svg",
       title: "제공 사항 외 식사 등 개인비용",
     },
-		{
+    {
       icon: "/icons/icon-deny.svg",
       title: "알라스씨 풀 입장료",
     },
-		{
+    {
       icon: "/icons/icon-deny.svg",
-      title:  "헬싱키 시내 개별 활동 비용",
+      title: "헬싱키 시내 개별 활동 비용",
     },
-		{
+    {
       icon: "/icons/icon-deny.svg",
       title: "일정 외 강제 쇼핑과 강제 팁 NO!",
-			subtext: "스노우 슈잉 (선택 / 추가 금액)",
+      subtext: "스노우 슈잉 (선택 / 추가 금액)",
     },
   ];
 
   return (
     <div>
-      {/* 포함사항 */}
-      <h1 className="text-2xl font-extrabold text-gray-800 mb-6">포함사항</h1>
-
       {/* 기간 정보 */}
       <div className="mb-8 h-[32px]">
-        <div className="flex items-center p-1 bg-[#F9FBFF]">
-          <span className="text-xl font-extrabold text-[#2469E9]">
-            8박 10일
+        <div className="flex items-center p-1 bg-blue-50">
+          <span className="text-lg font-extrabold text-blue-500">8박 10일</span>
+          <span className="ml-1 text-lg text-semibold text-blue-500">
+            inclusive
           </span>
-          <span className="ml-2 text-lg text-[#2469E9]">inclusive</span>
         </div>
-        <div className="w-full h-[1px] bg-blue-600"></div>
+        <div className="w-full h-[1px] bg-blue-500"></div>
       </div>
 
       {/* 포함사항 목록 */}
@@ -117,20 +118,22 @@ const ProductInclusions = () => {
             {/* 내용 */}
             <div className="flex-1 p-[2px] ml-2">
               <div className="flex items-center gap-2 mb-1">
-                <span className="font-bold text-[#585858] text-base">
+                <span className="font-bold text-gray-750 text-base">
                   {item.title}
                 </span>
                 {item.description && item.description.length == 1 && (
-                  <span className="text-[#777777] text-sm">
+                  <span className="text-gray-600 text-sm">
                     {item.description[0]}
                   </span>
                 )}
               </div>
-							{item.description && item.description.length > 1 && (
+              {item.description && item.description.length > 1 && (
                 <div>
                   {item.description.map((item, index) => (
-										<p key={index} className="text-[#777777] text-sm mb-2">{item}</p>
-									))}
+                    <p key={index} className="text-gray-600 text-sm mb-2">
+                      {item}
+                    </p>
+                  ))}
                 </div>
               )}
             </div>
@@ -142,7 +145,7 @@ const ProductInclusions = () => {
       <div className="mt-16 mb-2">
         <Image
           src="/icons/icon-deny-filled.svg"
-					alt=""
+          alt=""
           width={28}
           height={28}
           className="w-[32px] h-[32px]"
@@ -150,17 +153,17 @@ const ProductInclusions = () => {
       </div>
       <h1 className="text-2xl font-extrabold text-gray-800 mb-6">미포함사항</h1>
 
-			{/* 경고 메시지 */}
-      <div className="mb-6 p-2 border border-[#C52323] rounded-2xl w-fit">
+      {/* 경고 메시지 */}
+      <div className="mb-6 p-2 border border-red-650 rounded-2xl w-fit">
         <div className="flex items-start">
-					<Image
-						src="/icons/icon-alert-filled.svg"
-						alt=""
-						width={14}
-						height={14}
-						className="w-[16px] h-[16px]"
-					/>
-          <p className="text-[#C52323] font-medium text-xs ml-2">
+          <Image
+            src="/icons/icon-alert-filled.svg"
+            alt=""
+            width={14}
+            height={14}
+            className="w-[16px] h-[16px]"
+          />
+          <p className="text-red-650 font-medium text-xs ml-2">
             왕복항공권은 상품에 포함되지 않으니 따로 구매하셔야 합니다.
           </p>
         </div>
@@ -169,9 +172,9 @@ const ProductInclusions = () => {
       {/* 미포함사항 목록 */}
       <div className="space-y-4">
         {exclusionItems.map((item, index) => (
-          <div key={index} className="flex items-center">
-						{/* 아이콘 */}
-            <div className="text-gray-700">
+          <div key={index} className="flex items-start">
+            {/* 아이콘 */}
+            <div className="">
               <Image
                 src={item.icon}
                 alt={item.title}
@@ -180,22 +183,20 @@ const ProductInclusions = () => {
                 className="w-[28px] h-[28px]"
               />
             </div>
-						
+
             {/* 내용 */}
             <div className="flex-1 ml-2">
               {item?.subtext ? (
-                <span className="text-gray-900 text-base font-medium">
-                  {item.title}
-                </span>
-              ) : (
-                <div>
-                  <div className="text-gray-900 text-base font-medium">
+                <div className="flex-1 space-y-2">
+                  <div className="text-gray-750 text-base font-medium">
                     {item.title}
                   </div>
-                  <div className="text-gray-600 ml-6">
-                    {item.subtext}
-                  </div>
+                  <div className="text-gray-600 text-xs">{item.subtext}</div>
                 </div>
+              ) : (
+                <span className="text-gray-750 text-base font-medium">
+                  {item.title}
+                </span>
               )}
             </div>
           </div>
