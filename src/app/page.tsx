@@ -4,7 +4,7 @@ import { ChevronRight } from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#3c3c3c] text-white overflow-x-hidden">
+    <div className="max-w-sm mx-auto min-h-screen bg-[#3c3c3c] text-white overflow-x-hidden">
       {/* Main Content */}
       <div className="px-6 pt-8">
         {/* Header */}

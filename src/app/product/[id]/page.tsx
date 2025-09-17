@@ -152,7 +152,7 @@ const ProductPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white max-w-sm mx-auto ">
       {/* Full Screen Popup */}
       {isPopupOpen && (
         <div className="fixed inset-0 bg-white z-[9999] flex flex-col">
